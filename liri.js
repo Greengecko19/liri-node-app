@@ -1,5 +1,11 @@
 require("dotenv").config();
 
-var spotify = new Spotify(keys.spotify);
-var client = new Twitter(keys.twitter);
+var apiKeys = require('./keys.js');
+
+var spotifier = new Spotify(apiKeys.spotify);
+var tweeter = new Twitter(apiKeys.twitter);
+
+console.log(spotifier);
+console.log(tweeter);
+
 

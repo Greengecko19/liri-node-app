@@ -1,14 +1,14 @@
 
-console.log('this is loaded');
+console.log('keys.js is loaded');
 
-exports.twitter = {
-  consumer_key: process.env.B6UuVp6VfK7gW640WjXbsxeEU,
-  consumer_secret: process.env.WQj4c88fTHycdWtfj4rN2y8qWa1KqxQloGI4lK2WNLarFIPBi1,
-  access_token_key: process.env.986692255405740032-6lQVAmKGhh0aKihv0RE0gyJz6Loy14z,
-  access_token_secret: process.env.A27l7sqDt4blU6xAIzeUS9wqRzntxoULfQIQd4wRKygOH
+module.exports.twitter = {
+  consumer_key: process.env.TWITTER_CONSUMER_KEY,
+  consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+  access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
+  access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 };
 
-exports.spotify = {
-  id: process.env.2d48d822682648a193e84da2d44bda58,
-  secret: process.env.ccbc09d1389e4364a048dcc5f85a9f44
+module.exports.spotify = {
+  id: process.env.SPOTIFY_ID,
+  secret: process.env.SPOTIFY_SECRET
 };
