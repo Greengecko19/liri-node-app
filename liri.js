@@ -34,7 +34,7 @@ function spotifyThisSong(songName) {
     spotify.search({
         type: 'track',
         query: songName
-        // limit: 2
+        // limit: 5
     },
     function(err, data) {
         if (err) {
@@ -47,11 +47,15 @@ function spotifyThisSong(songName) {
         for (var i = 0; i < results.length; i++) {
             
             for (var j=0; j < results[i].artists.length; j++) {
-                console.log(i + "  Artist: " + results[i].artists[j].name +
-                " --  Album: " + results[i].album.name);
+                console.log((i+1) + "  Artist: " + results[i].artists[j].name);
+                process.stdout.cursorTo(4);
+                console.log("Album: " + results[i].album.name);
+                process.stdout.cursorTo(4);
+                console.log("Preview URL: " + results[i].preview_url);
+
+                //  console.log(i + '  Artist: ' + results[i].artists.map ( artist => { return artist.name }));  // alternate mapping method
             }
             
-            //  console.log(i + '  Artist: ' + results[i].artists.map ( artist => { return artist.name }));  // alternate mapping method
         }
     });
 };
