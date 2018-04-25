@@ -10,48 +10,45 @@ var twitter = new Twitter(keys.twitter);
 
 var picker = function(selectMethod, subject){
     switch(selectMethod){
-        case "my-tweets":
-        getMyTweets();
-        break;
+        // case "my-tweets":
+        // getMyTweets();
+        // break;
         case "spotify-this-song":
         spotifyThisSong(subject);
-        case "movie-this":
-        getMyMovies(subject);
+        break;
+        // case "movie-this":
+        // getMyMovies(subject);
         default:
-        console.log('LIRI does not know that');
+        console.log("LIRI don't know whatchoo talkin bout");
     }
 };
 
 
-var mainSelect = function(arg2,arg3) {
-    picker(arg2,arg3);
+var mainSelect = function(arg1,arg2) {
+    picker(arg1,arg2);
 };
 
 mainSelect(process.argv[2], process.argv[3]);
 
-function spotifyThisSong() {
+function spotifyThisSong(songName) {
     spotify.search({
-        type: 'track'
-        // query: 'Red Rain'
+        type: 'track',
+        query: songName,
+        limit: 20
     },
     function(err, data) {
         if (err) {
             return console.log('Error occurred: ' + err);
         }
-        // console.log("data: " + data);
-        // var temp = JSON.stringify(data);
-        // console.log("temp(stringified): " + temp);
-
+               
         var songs = data.tracks.items;
         for (var i = 0; i < songs.length; i++) {
-            console.log(i);
-            console.log('Artist:' + songs[i].artists.map(function(artist) {
-            return artist.name
-            }))
-        
-
-        
-
+            
+            for (var j=0; j < songs[i].artists.length; j++) {
+                console.log(i + "  Artist: " + songs[i].artists[j].name);
+            }
+            
+            // console.log(i + '  Artist: ' + songs[i].artists.map ( artist => { return artist.name }));  // alternate mapping method
         }
     });
 };
